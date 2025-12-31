@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Whatley</title>
     <style>
-        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
@@ -13,49 +12,20 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            color: #e0e0e0;
-            background: #1a1a1a;
-            max-width: 650px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            max-width: 700px;
             margin: 0 auto;
             padding: 40px 20px;
-            transition: background 0.3s, color 0.3s;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
         }
 
-        /* Light mode styles */
         body.light-mode {
-            background: #fff;
-            color: #333;
+            background-color: #ffffff;
+            color: #333333;
         }
 
-        body.light-mode a {
-            color: #0066cc;
-        }
-
-        body.light-mode nav a {
-            color: #666;
-        }
-
-        body.light-mode nav a:hover {
-            color: #000;
-        }
-
-        body.light-mode #theme-toggle {
-            border-color: #ccc;
-            color: #333;
-        }
-
-        body.light-mode hr {
-            border-top-color: #eee;
-        }
-
-        body.light-mode footer {
-            border-top-color: #eee;
-            color: #666;
-        }
-
-        /* Header and navigation */
         header {
             margin-bottom: 40px;
         }
@@ -86,7 +56,14 @@
             color: #fff;
         }
 
-        /* Theme toggle button */
+        body.light-mode nav a {
+            color: #666;
+        }
+
+        body.light-mode nav a:hover {
+            color: #333;
+        }
+
         #theme-toggle {
             background: none;
             border: 1px solid #555;
@@ -102,13 +79,56 @@
             border-color: #777;
         }
 
-        /* Content */
-        p {
+        body.light-mode #theme-toggle {
+            border-color: #ccc;
+            color: #333;
+        }
+
+        body.light-mode #theme-toggle:hover {
+            border-color: #999;
+        }
+
+        /* Hero section with photo - FIXED LAYOUT */
+        .hero {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 0; /* Prevents text overflow */
+        }
+
+        .hero-text p {
             margin-bottom: 16px;
         }
 
+        /* Mobile responsive */
+        @media (max-width: 600px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-photo {
+                width: 150px;
+                height: 180px;
+            }
+        }
+
         h2 {
-            font-size: 20px;
+            font-size: 18px;
             margin-top: 40px;
             margin-bottom: 20px;
             font-weight: 600;
@@ -123,21 +143,14 @@
             text-decoration: underline;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
+        body.light-mode a {
+            color: #c06060;
         }
 
-        ul li {
-            margin-bottom: 10px;
+        p {
+            margin-bottom: 16px;
         }
 
-        ul li::before {
-            content: "• ";
-            margin-right: 8px;
-        }
-
-        /* Recent posts styling */
         .recent-post {
             margin-bottom: 12px;
         }
@@ -146,9 +159,20 @@
             color: #666;
             font-size: 14px;
             margin-right: 10px;
+            display: inline-block;
+            min-width: 45px;
         }
 
-        /* Footer */
+        hr {
+            border: none;
+            border-top: 1px solid #333;
+            margin: 40px 0;
+        }
+
+        body.light-mode hr {
+            border-top-color: #ddd;
+        }
+
         footer {
             margin-top: 60px;
             padding-top: 20px;
@@ -157,10 +181,16 @@
             color: #999;
         }
 
-        hr {
-            border: none;
-            border-top: 1px solid #333;
-            margin: 40px 0;
+        body.light-mode footer {
+            border-top-color: #ddd;
+        }
+
+        .elsewhere {
+            margin-top: 20px;
+        }
+
+        .elsewhere a {
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -179,59 +209,48 @@
     </header>
 
     <main>
-        <p>
-            I'm a graduate student at Georgia Tech pursuing an MS in International Affairs with 
-            tracks in Science & Technology and International Security. I spend a lot of time thinking 
-            about energy security, economic statecraft, technological proliferation, and the political 
-            economy of defense.
-        </p>
+        <div class="hero">
+            <img src="photo.jpg" alt="Ali Whatley" class="hero-photo">
+            <div class="hero-text">
+                <p>
+                    I'm a graduate student at Georgia Tech pursuing an MS in International Affairs, 
+                    funded by the Sam Nunn School of International Affairs.
+                </p>
+                <p>
+                    Before this I completed degrees in Economics and Political Science at Georgia State 
+                    University, where I also finished MA-level coursework in Economics through the 4+1 program.
+                </p>
+            </div>
+        </div>
+
+        <h2>More coming soon.</h2>
 
         <p>
-            My current work includes an ASDL Grand Challenge project on energy systems and national 
-            security, where I'm developing tabletop tools to help policymakers make quantitative 
-            decisions for tactical responses to energy shocks. I also collaborate with the 
-            <a href="https://pollitik.org">Pollitik lab</a> on political approval ratings and 
-            electoral dynamics.
-        </p>
-
-        <p>
-            Before Georgia Tech, I completed a dual degree in Economics and Political Science at 
-            Georgia State University. I interned with the Bureau of Labor Statistics working on 
-            time series analysis and R code development.
-        </p>
-
-        <p>
-            I also <a href="https://substack.com/@aliwhatley">write</a> and 
-            <a href="https://twitter.com/aliwhatley">tweet</a> occasionally. You can follow my full 
-            media diet <a href="/about.html">here</a>.
-        </p>
-
-        <p>
-            Email me at <a href="mailto:whatley.ali6@gmail.com">whatley.ali6@gmail.com</a> or 
-            <a href="mailto:awhatley9@gatech.edu">awhatley9@gatech.edu</a> if you'd like to chat!
+            Outside of my studies I spend most of my time reading, watching movies, and following 
+            international security developments. You can see what I'm reading on 
+            <a href="https://www.goodreads.com/user/show/54501309-ali-whatley">Goodreads</a> and 
+            what I'm watching on <a href="https://letterboxd.com/pronceaboo/">Letterboxd</a>.
         </p>
 
         <hr>
 
         <h2>Recent</h2>
-        <ul>
-            <li class="recent-post">
-                <span class="post-date">12.29</span>
-                <a href="https://pollitik.substack.com/p/jimmy-carter-farmer-politician-humanitarian">Jimmy Carter, Farmer, Politician, Humanitarian, Dies</a>
-            </li>
-            <li class="recent-post">
-                <span class="post-date">11.15</span>
-                <a href="https://pollitik.substack.com/p/from-north-korea-with-love-north">From North Korea with Love: North Korean Provocations and South Korean Rallies</a>
-            </li>
-            <li class="recent-post">
-                <span class="post-date">10.20</span>
-                <a href="https://pollitik.substack.com/p/presidential-approval-in-ukraine">Presidential Approval in Ukraine, Past & Present</a>
-            </li>
-        </ul>
+        <div class="recent-post">
+            <span class="post-date">12.29</span>
+            <a href="https://pollitik.substack.com/p/jimmy-carter-farmer-politician-humanitarian">Jimmy Carter, Farmer, Politician, Humanitarian, Dies</a>
+        </div>
+        <div class="recent-post">
+            <span class="post-date">11.15</span>
+            <a href="https://pollitik.substack.com/p/from-north-korea-with-love-north">From North Korea with Love: North Korean Provocations and South Korean Rallies</a>
+        </div>
+        <div class="recent-post">
+            <span class="post-date">10.20</span>
+            <a href="https://pollitik.substack.com/p/presidential-approval-in-ukraine">Presidential Approval in Ukraine, Past & Present</a>
+        </div>
 
         <hr>
 
-        <p>
+        <p class="elsewhere">
             <strong>Elsewhere:</strong> 
             <a href="https://www.linkedin.com/in/ali-whatley-907a22187/">LinkedIn</a> · 
             <a href="https://substack.com/@aliwhatley">Substack</a> · 
@@ -246,31 +265,24 @@
     </footer>
 
     <script>
-        // Theme toggle functionality
         const toggle = document.getElementById('theme-toggle');
         const body = document.body;
 
-        // Check for saved theme preference or default to dark mode
         const currentTheme = localStorage.getItem('theme') || 'dark';
         if (currentTheme === 'light') {
             body.classList.add('light-mode');
             toggle.textContent = '[dark]';
         }
 
-        // Toggle theme on button click
-        toggle.addEventListener('click', function() {
+        toggle.addEventListener('click', () => {
             body.classList.toggle('light-mode');
-            
-            let theme = 'dark';
             if (body.classList.contains('light-mode')) {
-                theme = 'light';
                 toggle.textContent = '[dark]';
+                localStorage.setItem('theme', 'light');
             } else {
                 toggle.textContent = '[light]';
+                localStorage.setItem('theme', 'dark');
             }
-            
-            // Save theme preference
-            localStorage.setItem('theme', theme);
         });
     </script>
 </body>
