@@ -5,51 +5,223 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Ali Whatley</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-            max-width: 650px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            max-width: 700px;
             margin: 0 auto;
             padding: 40px 20px;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
         }
-        h1 { font-size: 24px; margin-bottom: 30px; font-weight: 600; }
-        p { margin-bottom: 16px; }
-        a { color: #0066cc; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        nav { margin-bottom: 30px; font-size: 14px; }
-        nav a { color: #666; text-decoration: none; margin-right: 15px; }
-        nav a:hover { color: #000; }
+
+        body.light-mode {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h1 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        nav {
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        nav a {
+            color: #999;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        nav a.active {
+            color: #fff;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        body.light-mode nav a {
+            color: #666;
+        }
+
+        body.light-mode nav a.active,
+        body.light-mode nav a:hover {
+            color: #333;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: 1px solid #555;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+            margin-left: 10px;
+            color: #e0e0e0;
+        }
+
+        #theme-toggle:hover {
+            border-color: #777;
+        }
+
+        body.light-mode #theme-toggle {
+            border-color: #ccc;
+            color: #333;
+        }
+
+        a {
+            color: #d19a9a;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        body.light-mode a {
+            color: #c06060;
+        }
+
+        /* Contact section */
+        h2 {
+            font-size: 22px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .contact-section {
+            margin-bottom: 25px;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            color: #ccc;
+        }
+
+        body.light-mode .contact-info {
+            color: #555;
+        }
+
+        .contact-info a {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-note {
+            color: #666;
+            font-size: 14px;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+            color: #999;
+        }
+
+        body.light-mode footer {
+            border-top-color: #ddd;
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/">← back to home</a>
-    </nav>
+    <header>
+        <h1><a href="/">Ali Whatley</a></h1>
+        <nav>
+            <a href="/">home</a> · 
+            <a href="/research.html">research</a> · 
+            <a href="/writing.html">writing</a> · 
+            <a href="/cv.html">cv</a> · 
+            <a href="/about.html">about</a> · 
+            <a href="/contact.html" class="active">contact</a>
+            <button id="theme-toggle">[light]</button>
+        </nav>
+    </header>
 
-    <h1>Contact</h1>
+    <main>
+        <h2>Contact</h2>
 
-    <p>
-        <strong>Email:</strong><br>
-        <a href="mailto:whatley.ali6@gmail.com">whatley.ali6@gmail.com</a> (personal)<br>
-        <a href="mailto:awhatley9@gatech.edu">awhatley9@gatech.edu</a> (Georgia Tech)
-    </p>
+        <div class="contact-section">
+            <div class="contact-label">Email:</div>
+            <div class="contact-info">
+                <a href="mailto:whatley.ali6@gmail.com">whatley.ali6@gmail.com</a> <span class="contact-note">(personal)</span>
+                <a href="mailto:awhatley9@gatech.edu">awhatley9@gatech.edu</a> <span class="contact-note">(Georgia Tech)</span>
+            </div>
+        </div>
 
-    <p>
-        <strong>Phone:</strong><br>
-        (404) 916-0781
-    </p>
+        <div class="contact-section">
+            <div class="contact-label">Phone:</div>
+            <div class="contact-info">
+                (404) 916-0781
+            </div>
+        </div>
 
-    <p>
-        <strong>Location:</strong><br>
-        Atlanta, GA
-    </p>
+        <div class="contact-section">
+            <div class="contact-label">Location:</div>
+            <div class="contact-info">
+                Atlanta, GA
+            </div>
+        </div>
 
-    <p>
-        <strong>Connect:</strong><br>
-        <a href="https://www.linkedin.com/in/ali-whatley-907a22187/">LinkedIn</a>
-    </p>
+        <div class="contact-section">
+            <div class="contact-label">Connect:</div>
+            <div class="contact-info">
+                <a href="https://www.linkedin.com/in/ali-whatley-907a22187/">LinkedIn</a>
+                <a href="https://twitter.com/aliwhatley">Twitter</a>
+                <a href="https://substack.com/@aliwhatley">Substack</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="/cv.pdf">CV</a> · <a href="mailto:whatley.ali6@gmail.com">contact</a>
+    </footer>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            toggle.textContent = '[dark]';
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                toggle.textContent = '[dark]';
+                localStorage.setItem('theme', 'light');
+            } else {
+                toggle.textContent = '[light]';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
