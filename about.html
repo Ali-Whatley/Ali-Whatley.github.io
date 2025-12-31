@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Ali Whatley</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #1a1a1a;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            background: #fff;
+            color: #333;
+        }
+
+        body.light-mode a { color: #0066cc; }
+        body.light-mode nav a { color: #666; }
+        body.light-mode nav a:hover { color: #000; }
+        body.light-mode #theme-toggle { border-color: #ccc; color: #333; }
+
+        header { margin-bottom: 40px; }
+        h1 { font-size: 24px; margin-bottom: 20px; font-weight: 600; }
+        h1 a { color: inherit; text-decoration: none; }
+        
+        nav {
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        nav a {
+            color: #999;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+        
+        nav a:hover { color: #fff; }
+        body.light-mode nav a:hover { color: #000; }
+
+        #theme-toggle {
+            background: none;
+            border: 1px solid #555;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+            margin-left: 10px;
+            color: #e0e0e0;
+        }
+
+        p { margin-bottom: 16px; }
+        a { color: #d19a9a; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Photo styling */
+        .about-photo {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+        }
+
+        .about-content::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        h2 { 
+            font-size: 20px; 
+            margin-top: 40px; 
+            margin-bottom: 20px; 
+            font-weight: 600;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a href="/">Ali Whatley</a></h1>
+        <nav>
+            <a href="/">home</a> · 
+            <a href="/research.html">research</a> · 
+            <a href="/writing.html">writing</a> · 
+            <a href="/cv.html">cv</a> · 
+            <a href="/about.html">about</a> · 
+            <a href="/contact.html">contact</a>
+            <button id="theme-toggle">[light]</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-content">
+            <img src="/photo.jpg" alt="Ali Whatley" class="about-photo">
+            
+            <p>
+                I'm a graduate student at Georgia Tech pursuing an MS in International Affairs, 
+                funded by the Sam Nunn School of International Affairs.
+            </p>
+
+            <p>
+                Before this I completed degrees in Economics and Political Science at Georgia State 
+                University, where I also finished MA-level coursework in Economics through the 4+1 program.
+            </p>
+        </div>
+
+        <h2>More coming soon.</h2>
+
+        <p>
+            Outside of my studies I spend most of my time reading, watching movies, and following 
+            international security developments. You can see what I'm reading on 
+            <a href="https://www.goodreads.com/user/show/54501309-ali-whatley">Goodreads</a> and 
+            what I'm watching on <a href="https://letterboxd.com/pronceaboo/">Letterboxd</a>.
+        </p>
+    </main>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            toggle.textContent = '[dark]';
+        }
+
+        toggle.addEventListener('click', function() {
+            body.classList.toggle('light-mode');
+            let theme = 'dark';
+            if (body.classList.contains('light-mode')) {
+                theme = 'light';
+                toggle.textContent = '[dark]';
+            } else {
+                toggle.textContent = '[light]';
+            }
+            localStorage.setItem('theme', theme);
+        });
+    </script>
+</body>
+</html>
