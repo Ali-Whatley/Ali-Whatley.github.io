@@ -1,33 +1,275 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Your Name</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Whatley</title>
     <style>
-        body {
-            max-width: 650px;
-            margin: 40px auto;
-            padding: 0 20px;
-            font-family: -apple-system, sans-serif;
-            line-height: 1.6;
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode a {
+            color: #58a6ff;
+        }
+
+        body.dark-mode a:hover {
+            color: #79c0ff;
+        }
+
+        /* Header and navigation */
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        nav {
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
         nav a {
-            margin-right: 15px;
+            color: #666;
             text-decoration: none;
+            margin-right: 15px;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+        body.dark-mode nav a {
+            color: #999;
+        }
+
+        body.dark-mode nav a:hover {
+            color: #fff;
+        }
+
+        /* Dark mode toggle button */
+        #dark-toggle {
+            background: none;
+            border: 1px solid #ccc;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+
+        body.dark-mode #dark-toggle {
+            border-color: #555;
+            color: #e0e0e0;
+        }
+
+        /* Content */
+        p {
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        ul li::before {
+            content: "• ";
+            margin-right: 8px;
+        }
+
+        /* Recent posts styling */
+        .recent-post {
+            margin-bottom: 12px;
+        }
+
+        .post-date {
+            color: #999;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            color: #666;
+        }
+
+        body.dark-mode footer {
+            border-top-color: #333;
+            color: #999;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
+        }
+
+        body.dark-mode hr {
+            border-top-color: #333;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/">home</a>
-        <a href="/about.html">about</a>
-    </nav>
-    
-    <h1>Your Name</h1>
-    <p>Welcome to my website. I'm working on cool stuff.</p>
-    
-    <h2>Recent Posts</h2>
-    <ul>
-        <li>Coming soon...</li>
-    </ul>
+    <header>
+        <h1><a href="/" style="color: inherit; text-decoration: none;">Ali Whatley</a></h1>
+        <nav>
+            <a href="/">home</a> · 
+            <a href="/research.html">research</a> · 
+            <a href="/writing.html">writing</a> · 
+            <a href="/cv.html">cv</a> · 
+            <a href="/contact.html">contact</a>
+            <button id="dark-toggle">dark</button>
+        </nav>
+    </header>
+
+    <main>
+        <p>
+            I'm a graduate student at Georgia Tech pursuing an MS in International Affairs with 
+            tracks in Science & Technology and International Security. I spend a lot of time thinking 
+            about energy security, economic statecraft, technological proliferation, and the political 
+            economy of defense.
+        </p>
+
+        <p>
+            My current work includes an <a href="/research/grand-challenge.html">ASDL Grand Challenge project</a> 
+            on energy systems and national security, where I'm developing tabletop tools to help 
+            policymakers make quantitative decisions for tactical responses to energy shocks. I also 
+            collaborate with the <a href="https://pollitik.org">Pollitik lab</a> on political approval 
+            ratings and electoral dynamics.
+        </p>
+
+        <p>
+            Before Georgia Tech, I completed a dual degree in Economics and Political Science at 
+            Georgia State University, where I also finished my MA coursework in Economics. You can 
+            read more about my research on <a href="/research.html">this page</a>.
+        </p>
+
+        <p>
+            Email me at <a href="mailto:whatley.ali6@gmail.com">whatley.ali6@gmail.com</a> or 
+            <a href="mailto:awhatley9@gatech.edu">awhatley9@gatech.edu</a> if you'd like to chat!
+        </p>
+
+        <hr>
+
+        <h2>Recent</h2>
+        <ul>
+            <li class="recent-post">
+                <span class="post-date">12.30</span>
+                <a href="/writing/energy-security-2024.html">Energy Security in 2024: Reflections on the Grand Challenge</a>
+            </li>
+            <li class="recent-post">
+                <span class="post-date">12.15</span>
+                <a href="/writing/jimmy-carter.html">Jimmy Carter, Farmer, Politician, Humanitarian, Dies</a>
+            </li>
+            <li class="recent-post">
+                <span class="post-date">11.20</span>
+                <a href="/writing/nk-provocations.html">From North Korea with Love: North Korean Provocations and South Korean Rallies</a>
+            </li>
+            <li class="recent-post">
+                <span class="post-date">10.15</span>
+                <a href="/writing/natural-gas-deregulation.html">An Examination of Natural Gas Deregulation</a>
+            </li>
+        </ul>
+
+        <hr>
+
+        <h2>Research Interests</h2>
+        <p>
+            Energy Security · Economic Statecraft · Technological Proliferation · 
+            International Security · Political Economy of Defense
+        </p>
+
+        <hr>
+
+        <p>
+            <strong>Elsewhere:</strong> 
+            <a href="https://www.linkedin.com/in/ali-whatley-907a22187/">LinkedIn</a> · 
+            <a href="https://pollitik.org">Pollitik</a> · 
+            <a href="https://github.com/aliwhatley">GitHub</a>
+        </p>
+    </main>
+
+    <footer>
+        <a href="/cv.pdf">CV</a> · <a href="mailto:whatley.ali6@gmail.com">contact</a>
+    </footer>
+
+    <script>
+        // Dark mode toggle functionality
+        const toggle = document.getElementById('dark-toggle');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            toggle.textContent = 'light';
+        }
+
+        // Toggle dark mode on button click
+        toggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            
+            let theme = 'light';
+            if (body.classList.contains('dark-mode')) {
+                theme = 'dark';
+                toggle.textContent = 'light';
+            } else {
+                toggle.textContent = 'dark';
+            }
+            
+            // Save theme preference
+            localStorage.setItem('theme', theme);
+        });
+    </script>
 </body>
 </html>
