@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing - Ali Whatley</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.light-mode {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        /* Main content wrapper */
+        .main-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            transition: margin-right 0.3s ease;
+        }
+
+        body.panel-open .main-wrapper {
+            margin-right: 500px;
+        }
+
+        @media (max-width: 1200px) {
+            body.panel-open .main-wrapper {
+                margin-right: 0;
+            }
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h1 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        nav {
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        nav a {
+            color: #999;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        nav a.active {
+            color: #fff;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        body.light-mode nav a {
+            color: #666;
+        }
+
+        body.light-mode nav a.active,
+        body.light-mode nav a:hover {
+            color: #333;
+        }
+
+        #theme-toggle {
+            background: none;
+            border: 1px solid #555;
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+            margin-left: 10px;
+            color: #e0e0e0;
+        }
+
+        #theme-toggle:hover {
+            border-color: #777;
+        }
+
+        body.light-mode #theme-toggle {
+            border-color: #ccc;
+            color: #333;
+        }
+
+        a {
+            color: #d19a9a;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        body.light-mode a {
+            color: #c06060;
+        }
+
+        /* Blog section */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .section-header::before {
+            content: "▼";
+            margin-right: 10px;
+            font-size: 12px;
+            transition: transform 0.2s;
+        }
+
+        .section-header.collapsed::before {
+            transform: rotate(-90deg);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        /* Meta section */
+        .meta-section {
+            margin-bottom: 30px;
+        }
+
+        .meta-label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .meta-link {
+            background: #2a2a2a;
+            padding: 15px 20px;
+            border-radius: 4px;
+            display: block;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .meta-link:hover {
+            background: #333;
+            text-decoration: none;
+            border-color: #d19a9a;
+        }
+
+        .meta-link::before {
+            content: "→ ";
+            margin-right: 5px;
+        }
+
+        body.light-mode .meta-link {
+            background: #f5f5f5;
+        }
+
+        body.light-mode .meta-link:hover {
+            background: #eee;
+            border-color: #c06060;
+        }
+
+        /* Timeline section */
+        .timeline-section {
+            margin-top: 30px;
+        }
+
+        .timeline-label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Category tags */
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .category-tag {
+            padding: 6px 14px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #e0e0e0;
+            background: transparent;
+        }
+
+        .category-tag:hover,
+        .category-tag.active {
+            border-color: #d19a9a;
+            color: #d19a9a;
+        }
+
+        body.light-mode .category-tag {
+            border-color: #ddd;
+            color: #666;
+        }
+
+        body.light-mode .category-tag:hover,
+        body.light-mode .category-tag.active {
+            border-color: #c06060;
+            color: #c06060;
+        }
+
+        /* Year sections */
+        .year-section {
+            margin-bottom: 30px;
+        }
+
+        .year-header {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        body.light-mode .year-header {
+            border-bottom-color: #ddd;
+        }
+
+        /* Post entries */
+        .post-entry {
+            display: grid;
+            grid-template-columns: 50px 40px 1fr auto;
+            gap: 10px;
+            align-items: baseline;
+            padding: 8px 0;
+        }
+
+        .post-month {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .post-day {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .post-title {
+            color: #d19a9a;
+        }
+
+        .post-title:hover {
+            text-decoration: underline;
+        }
+
+        body.light-mode .post-title {
+            color: #c06060;
+        }
+
+        .post-category {
+            color: #666;
+            font-size: 13px;
+            text-align: right;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 600px) {
+            .post-entry {
+                grid-template-columns: 35px 25px 1fr;
+                gap: 5px;
+            }
+
+            .post-category {
+                display: none;
+            }
+        }
+
+        /* ============================================
+           SLIDE-OUT PANEL STYLES
+           ============================================ */
+        .panel-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        body.panel-open .panel-overlay {
+            display: block;
+        }
+
+        @media (min-width: 1201px) {
+            body.panel-open .panel-overlay {
+                display: none;
+            }
+        }
+
+        .slide-panel {
+            position: fixed;
+            top: 0;
+            right: -520px;
+            width: 500px;
+            max-width: 100vw;
+            height: 100vh;
+            background: #1a1a1a;
+            border-left: 1px solid #333;
+            z-index: 999;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 40px 30px;
+        }
+
+        body.light-mode .slide-panel {
+            background: #ffffff;
+            border-left-color: #ddd;
+        }
+
+        body.panel-open .slide-panel {
+            right: 0;
+        }
+
+        .panel-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px 10px;
+            line-height: 1;
+        }
+
+        .panel-close:hover {
+            color: #fff;
+        }
+
+        body.light-mode .panel-close:hover {
+            color: #333;
+        }
+
+        .panel-content h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-right: 40px;
+        }
+
+        .panel-content .panel-subtitle {
+            color: #d19a9a;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        body.light-mode .panel-content .panel-subtitle a {
+            color: #c06060;
+        }
+
+        .panel-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .panel-content h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .panel-content ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .panel-content ul li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #333;
+            margin: 40px 0;
+        }
+
+        body.light-mode hr {
+            border-top-color: #ddd;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+            color: #999;
+        }
+
+        body.light-mode footer {
+            border-top-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay for mobile -->
+    <div class="panel-overlay" id="panel-overlay"></div>
+
+    <!-- Slide-out Panel -->
+    <div class="slide-panel" id="slide-panel">
+        <button class="panel-close" id="panel-close">×</button>
+        <div class="panel-content">
+            <h2>An overview of my writing on international relations & defense</h2>
+            <p class="panel-subtitle"><a href="https://substack.com/@aliwhatley">Originally published on Substack</a></p>
+
+            <p>
+                I write about international security, political economy, and the changing nature of conflict. 
+                My thinking is shaped by a core observation: the post-Cold War era hasn't brought the peace 
+                liberal theorists predicted—it's transformed <em>how</em> states fight, not <em>whether</em> they fight.
+            </p>
+
+            <p>
+                Economic interdependence doesn't prevent conflict. It reshapes it. States with deep trade ties 
+                don't stop competing—they compete differently. This explains why gray-zone tactics, cyber operations, 
+                and economic coercion have proliferated alongside globalization, not despite it.
+            </p>
+
+            <h3>Start here</h3>
+
+            <ul>
+                <li>
+                    <a href="https://pollitik.substack.com/p/jimmy-carter-farmer-politician-humanitarian">Jimmy Carter, Farmer, Politician, Humanitarian, Dies</a> — 
+                    On Carter's legacy in foreign policy and the tension between idealism and realism.
+                </li>
+                <li>
+                    <a href="https://pollitik.substack.com/p/from-north-korea-with-love-north">From North Korea with Love</a> — 
+                    Analyzing North Korean provocations and South Korean domestic politics.
+                </li>
+                <li>
+                    <a href="https://pollitik.substack.com/p/presidential-approval-in-ukraine">Presidential Approval in Ukraine, Past & Present</a> — 
+                    How war shapes democratic accountability.
+                </li>
+            </ul>
+
+            <h3>Core themes</h3>
+
+            <p>
+                <strong>Trade and conflict intensity.</strong> I argue that trade vulnerability—the interaction of 
+                bilateral dependence and limited alternatives—constrains escalation rather than preventing conflict 
+                entirely. High vulnerability pushes states toward lower-intensity tactics; low vulnerability permits 
+                conventional warfare. This reframes the liberal peace debate from conflict occurrence to conflict conduct.
+            </p>
+
+            <p>
+                <strong>Gray-zone competition.</strong> The proliferation of gray-zone tactics isn't a bug of the 
+                international system—it's a feature. States facing economic constraints on escalation don't stop 
+                pursuing their objectives; they pursue them through cyber operations, economic statecraft, and 
+                sub-threshold coercion. Understanding this requires moving beyond binary war/peace frameworks.
+            </p>
+
+            <p>
+                <strong>Cyber and emerging domains.</strong> The 2017 WannaCry and NotPetya attacks demonstrated how 
+                quickly offensive capabilities can proliferate—an American exploit, leaked by hackers, weaponized by 
+                North Korea and Russia within months. This pattern of capability diffusion shapes how I think about 
+                technological competition and arms control in new domains.
+            </p>
+
+            <p>
+                <strong>International institutions.</strong> I'm interested in how international organizations create 
+                standards that enable cooperation without requiring states to trust each other. Maritime safety regimes 
+                like IMSO show how technical standardization can produce collective benefits even among competitors.
+            </p>
+
+            <h3>What I'm working on</h3>
+
+            <p>
+                My current research examines how trade structure affects conflict intensity using a mixed-methods 
+                design combining large-N analysis of directed dyads with comparative case studies of Russia-Ukraine, 
+                China-Taiwan, and Ethiopia-Eritrea. I'm also tracking how decoupling trends post-2014 are reshaping 
+                these dynamics.
+            </p>
+
+            <p>
+                More broadly, I'm interested in energy security, economic statecraft, technological proliferation, 
+                and the political economy of defense—all variations on the same question: how do economic relationships 
+                shape strategic behavior?
+            </p>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <header>
+            <h1><a href="/">Ali Whatley</a></h1>
+            <nav>
+                <a href="/">home</a> · 
+                <a href="/research.html">research</a> · 
+                <a href="/writing.html" class="active">writing</a> · 
+                <a href="/cv.html">cv</a> · 
+                <a href="/about.html">about</a> · 
+                <a href="/contact.html">contact</a>
+                <button id="theme-toggle">[light]</button>
+            </nav>
+        </header>
+
+        <main>
+            <div class="section-header">
+                <span class="section-title">Blog</span>
+            </div>
+
+            <div class="meta-section">
+                <div class="meta-label">META</div>
+                <div class="meta-link" id="overview-link">An overview of my writing on international relations & defense</div>
+            </div>
+
+            <div class="timeline-section">
+                <div class="timeline-label">TIMELINE</div>
+                
+                <div class="category-tags">
+                    <button class="category-tag active" data-category="all">All</button>
+                    <button class="category-tag" data-category="security">Security</button>
+                    <button class="category-tag" data-category="economics">Economics</button>
+                    <button class="category-tag" data-category="politics">Politics</button>
+                    <button class="category-tag" data-category="cyber">Cyber</button>
+                    <button class="category-tag" data-category="misc">Misc</button>
+                </div>
+
+                <!-- 2024 -->
+                <div class="year-section">
+                    <div class="year-header">2024</div>
+                    
+                    <div class="post-entry" data-category="politics">
+                        <span class="post-month">Dec</span>
+                        <span class="post-day">29</span>
+                        <a href="https://pollitik.substack.com/p/jimmy-carter-farmer-politician-humanitarian" class="post-title">Jimmy Carter, Farmer, Politician, Humanitarian, Dies</a>
+                        <span class="post-category">Politics</span>
+                    </div>
+
+                    <div class="post-entry" data-category="security">
+                        <span class="post-month">Nov</span>
+                        <span class="post-day">15</span>
+                        <a href="https://pollitik.substack.com/p/from-north-korea-with-love-north" class="post-title">From North Korea with Love: North Korean Provocations and South Korean Rallies</a>
+                        <span class="post-category">Security</span>
+                    </div>
+
+                    <div class="post-entry" data-category="politics">
+                        <span class="post-month">Oct</span>
+                        <span class="post-day">20</span>
+                        <a href="https://pollitik.substack.com/p/presidential-approval-in-ukraine" class="post-title">Presidential Approval in Ukraine, Past & Present</a>
+                        <span class="post-category">Politics</span>
+                    </div>
+
+                    <!-- Add more posts here -->
+                    <!--
+                    <div class="post-entry" data-category="cyber">
+                        <span class="post-month">Sep</span>
+                        <span class="post-day">10</span>
+                        <a href="#" class="post-title">Your Cyber Post Title</a>
+                        <span class="post-category">Cyber</span>
+                    </div>
+                    -->
+                </div>
+
+                <!-- 2023 -->
+                <!--
+                <div class="year-section">
+                    <div class="year-header">2023</div>
+                    
+                    <div class="post-entry" data-category="economics">
+                        <span class="post-month">Dec</span>
+                        <span class="post-day">15</span>
+                        <a href="#" class="post-title">Older Post</a>
+                        <span class="post-category">Economics</span>
+                    </div>
+                </div>
+                -->
+            </div>
+        </main>
+
+        <footer>
+            <a href="/cv.pdf">CV</a> · <a href="mailto:whatley.ali6@gmail.com">contact</a>
+        </footer>
+    </div>
+
+    <script>
+        // Theme toggle
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            toggle.textContent = '[dark]';
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                toggle.textContent = '[dark]';
+                localStorage.setItem('theme', 'light');
+            } else {
+                toggle.textContent = '[light]';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Category filtering
+        const categoryTags = document.querySelectorAll('.category-tag');
+        const postEntries = document.querySelectorAll('.post-entry');
+
+        categoryTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                categoryTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+
+                const category = tag.dataset.category;
+
+                postEntries.forEach(post => {
+                    if (category === 'all' || post.dataset.category === category) {
+                        post.style.display = 'grid';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Slide panel functionality
+        const overviewLink = document.getElementById('overview-link');
+        const slidePanel = document.getElementById('slide-panel');
+        const panelClose = document.getElementById('panel-close');
+        const panelOverlay = document.getElementById('panel-overlay');
+
+        overviewLink.addEventListener('click', () => {
+            body.classList.add('panel-open');
+        });
+
+        panelClose.addEventListener('click', () => {
+            body.classList.remove('panel-open');
+        });
+
+        panelOverlay.addEventListener('click', () => {
+            body.classList.remove('panel-open');
+        });
+
+        // Close panel with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && body.classList.contains('panel-open')) {
+                body.classList.remove('panel-open');
+            }
+        });
+    </script>
+</body>
+</html>
