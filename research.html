@@ -108,13 +108,81 @@
             font-weight: 600;
         }
 
+        h3 {
+            font-size: 16px;
+            margin-top: 30px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #d19a9a;
+        }
+
+        body.light-mode h3 {
+            color: #c06060;
+        }
+
         p {
             margin-bottom: 16px;
         }
 
-        .coming-soon {
-            color: #666;
-            font-style: italic;
+        .paper {
+            margin-bottom: 24px;
+        }
+
+        .paper-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .paper-detail {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .paper-abstract {
+            font-size: 14px;
+            margin-top: 6px;
+            color: #bbb;
+        }
+
+        body.light-mode .paper-abstract {
+            color: #555;
+        }
+
+        .presentations {
+            list-style: none;
+            padding: 0;
+        }
+
+        .presentations li {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        .presentations .venue {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .award {
+            color: #d19a9a;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        body.light-mode .award {
+            color: #c06060;
+        }
+
+        .other-project {
+            margin-bottom: 20px;
+        }
+
+        .other-project .paper-title {
+            font-size: 15px;
+        }
+
+        .other-project .paper-detail {
+            font-size: 13px;
         }
 
         footer {
@@ -146,15 +214,53 @@
 
     <main>
         <h2>Research</h2>
-        
-        <p class="coming-soon">More coming soon.</p>
 
         <p>
-            My research interests include energy security, economic statecraft, technological 
-            proliferation, and the political economy of defense.
+            My research focuses on defense policy, technological proliferation, energy security, and the political economy of defense. I'm particularly interested in how organizational structures shape decision-making around high-risk technologies, and how states build and sustain the industrial capacity for conflict.
         </p>
 
-        <p>
+        <h3>Working Papers</h3>
+
+        <div class="paper">
+            <div class="paper-title">"Nuclear Testing and Normal Accidents: A Case Study of the Castle Bravo Accident"</div>
+            <div class="paper-detail">Independent study with Dr. Margaret E. Kosal, Sam Nunn School of International Affairs, Georgia Tech</div>
+            <p class="paper-abstract">
+                Examines the interaction between organizational structure and technological complexity in nuclear governance, using the 1954 Castle Bravo accident as a case study.
+            </p>
+        </div>
+
+        <h3>Presentations</h3>
+
+        <ul class="presentations">
+            <li>
+                "Nuclear Testing and Normal Accidents: A Case Study of The Castle Bravo Accident"
+                <br><span class="venue">Southeast Nuclear Research Conference | Panel Presentation | Athens, GA | May 2026</span>
+            </li>
+            <li>
+                "Nuclear Testing and Normal Accidents: A Case Study of The Castle Bravo Accident"
+                <br><span class="venue">IAC Annual Student Research Conference | Poster Presentation | Atlanta, GA | March 2026</span>
+                <br><span class="award">Winner, Best Research Award</span>
+            </li>
+        </ul>
+
+        <h3>Other Projects</h3>
+
+        <div class="other-project">
+            <div class="paper-title">Energy Systems and National Security (ASDL Grand Challenge)</div>
+            <div class="paper-detail">Year-long group research project developing a tabletop tool for policymakers to facilitate quantitative decision-making for tactical responses to energy shocks.</div>
+        </div>
+
+        <div class="other-project">
+            <div class="paper-title">"An Examination of Natural Gas Deregulation"</div>
+            <div class="paper-detail">Research on natural gas pricing dynamics resulting from deregulation of natural gas markets.</div>
+        </div>
+
+        <div class="other-project">
+            <div class="paper-title">Executive Approval Project (Pollitik Lab)</div>
+            <div class="paper-detail">Data collection and comparative analysis for an NSF-funded multi-university collaboration tracking global leader approval ratings, with Dr. Ryan Carlin at Georgia State University.</div>
+        </div>
+
+        <p style="margin-top: 30px;">
             Feel free to reach out at <a href="mailto:awhatley9@gatech.edu">awhatley9@gatech.edu</a> 
             if you'd like to discuss potential collaborations.
         </p>
