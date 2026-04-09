@@ -102,7 +102,6 @@
             color: #c06060;
         }
 
-        /* About content with photo */
         .about-content {
             display: flex;
             gap: 30px;
@@ -147,6 +146,24 @@
             margin-bottom: 16px;
         }
 
+        .interests-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .interests-list li {
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .interests-list li strong {
+            color: #d19a9a;
+        }
+
+        body.light-mode .interests-list li strong {
+            color: #c06060;
+        }
+
         footer {
             margin-top: 60px;
             padding-top: 20px;
@@ -179,22 +196,23 @@
             <img src="photo.jpg" alt="Ali Whatley" class="about-photo">
             <div class="about-text">
                 <p>
-                    I'm Ali Whatley, a graduate student at Georgia Tech pursuing an MS in International Affairs with tracks in Science & Technology and International Security. My research sits at the intersection of defense policy, technological proliferation, and energy security, with a particular focus on how states prepare for and sustain warfare through their defense industrial bases. Before Tech, I earned dual degrees in Economics and Political Science from Georgia State University, where I got my start in quantitative research through econometrics and comparative politics. I've worked with the Bureau of Labor Statistics, contributed to NSF-funded research on global executive approval, and presented original research on nuclear governance at regional and national conferences. I'm always looking for ways to bridge technical analysis and policy thinking, whether that's through causal inference, formal modeling, or good old-fashioned case study work.
+                    I'm Ali Whatley, a graduate student at Georgia Tech pursuing an MS in International Affairs with tracks in Science & Technology and International Security. My research sits at the intersection of defense policy, technological proliferation, and energy security, with a particular focus on how states prepare for and sustain warfare through their defense industrial bases.
                 </p>
-              Defense Policy & Strategy - Defense industrial base, wartime sustainment, and state capacity for conflict
-Nuclear Security & Proliferation - Nuclear governance, dual-use technologies, and nonproliferation policy
-Energy Security - Energy systems as national security infrastructure, energy shocks, and civilian readiness
-Science, Technology & Security - How emerging technologies reshape the international security landscape
-Quantitative Methods for Policy - Causal inference, panel data, and formal modeling applied to security and political economy questions
-International Security & Political Economy - Great power competition, economic statecraft, and the politics of defense spending
+                <p>
+                    Before Tech, I earned dual degrees in Economics and Political Science from Georgia State University, where I got my start in quantitative research through econometrics and comparative politics. I've worked with the Bureau of Labor Statistics, contributed to NSF-funded research on global executive approval, and presented original research on nuclear governance at regional and national conferences. I'm always looking for ways to bridge technical analysis and policy thinking, whether that's through causal inference, formal modeling, or good old-fashioned case study work.
+                </p>
             </div>
         </div>
 
-        <h2>Interests</h2>
-        <p>
-            I spend a lot of time thinking about energy security, economic statecraft, technological 
-            proliferation, and the political economy of defense.
-        </p>
+        <h2>Research Interests</h2>
+        <ul class="interests-list">
+            <li><strong>Defense Policy & Strategy</strong> — Defense industrial base, wartime sustainment, and state capacity for conflict</li>
+            <li><strong>Nuclear Security & Proliferation</strong> — Nuclear governance, dual-use technologies, and nonproliferation policy</li>
+            <li><strong>Energy Security</strong> — Energy systems as national security infrastructure, energy shocks, and civilian readiness</li>
+            <li><strong>Science, Technology & Security</strong> — How emerging technologies reshape the international security landscape</li>
+            <li><strong>Quantitative Methods for Policy</strong> — Causal inference, panel data, and formal modeling applied to security and political economy questions</li>
+            <li><strong>International Security & Political Economy</strong> — Great power competition, economic statecraft, and the politics of defense spending</li>
+        </ul>
     </main>
 
     <footer>
