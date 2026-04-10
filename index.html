@@ -196,11 +196,11 @@
     <header>
         <h1><a href="/">Ali Whatley</a></h1>
         <nav>
-            <a href="/">home</a> · 
-            <a href="/research.html">research</a> · 
-            <a href="/writing.html">writing</a> · 
-            <a href="/cv.html">cv</a> · 
-            <a href="/about.html">about</a> · 
+            <a href="/">home</a> &#183;
+            <a href="/research.html">research</a> &#183;
+            <a href="/writing.html">writing</a> &#183;
+            <a href="/cv.html">cv</a> &#183;
+            <a href="/about.html">about</a> &#183;
             <a href="/contact.html">contact</a>
             <button id="theme-toggle">[light]</button>
         </nav>
@@ -211,7 +211,7 @@
             <img src="photo.jpg" alt="Ali Whatley" class="hero-photo">
             <div class="hero-text">
                 <p>
-                    Welcome! I'm a graduate student at the <a href="https://inta.gatech.edu/">Sam Nunn School of International Affairs</a> at Georgia Tech, where I'm pursuing an MS in International Affairs with tracks in Science & Technology and International Security.
+                    Welcome! I'm a graduate student at the <a href="https://inta.gatech.edu/">Sam Nunn School of International Affairs</a> at Georgia Tech, where I'm pursuing an MS in International Affairs with tracks in Science &#38; Technology and International Security.
                 </p>
                 <p>
                     My research focuses on defense policy, nuclear governance, and energy security. I'm currently working on a project examining organizational decision-making in high-risk technological systems, using the 1954 Castle Bravo nuclear test as a case study.
@@ -239,36 +239,43 @@
         </div>
         <div class="recent-post">
             <span class="post-date">10.20</span>
-            <a href="https://pollitik.substack.com/p/presidential-approval-in-ukraine">Presidential Approval in Ukraine, Past & Present</a>
+            <a href="https://pollitik.substack.com/p/presidential-approval-in-ukraine">Presidential Approval in Ukraine, Past &#38; Present</a>
         </div>
 
         <hr>
 
         <p class="elsewhere">
-            <strong>Elsewhere:</strong> 
-            <a href="https://www.linkedin.com/in/ali-whatley-907a22187/">LinkedIn</a> · 
-            <a href="https://x.com/AliWhatley24">X / Twitter</a> · 
+            <strong>Elsewhere:</strong>
+            <a href="https://www.linkedin.com/in/ali-whatley-907a22187/">LinkedIn</a> &#183;
+            <a href="https://x.com/AliWhatley24">X / Twitter</a> &#183;
             <a href="https://substack.com/@aliwhatley">Substack</a>
         </p>
     </main>
 
     <footer>
-        <a href="/cv.html">CV</a> · <a href="mailto:whatley.ali6@gmail.com">contact</a>
+        <a href="/cv.html">CV</a> &#183; <a href="/contact.html">contact</a>
     </footer>
 
     <script>
-        const toggle = document.getElementById('theme-toggle');
-        const body = document.body;
+        var toggle = document.getElementById('theme-toggle');
+        var bd = document.body;
 
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        if (currentTheme === 'light') {
-            body.classList.add('light-mode');
+        var saved = localStorage.getItem('theme') || 'dark';
+        if (saved === 'light') {
+            bd.classList.add('light-mode');
             toggle.textContent = '[dark]';
         }
 
-        toggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
+        toggle.addEventListener('click', function() {
+            bd.classList.toggle('light-mode');
+            if (bd.classList.contains('light-mode')) {
                 toggle.textContent = '[dark]';
                 localStorage.setItem('theme', 'light');
             } else {
+                toggle.textContent = '[light]';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
