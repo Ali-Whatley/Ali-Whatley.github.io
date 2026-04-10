@@ -23,7 +23,6 @@
             color: #333333;
         }
 
-        /* Main content wrapper */
         .main-wrapper {
             max-width: 900px;
             margin: 0 auto;
@@ -117,7 +116,6 @@
             color: #c06060;
         }
 
-        /* Blog section */
         .section-header {
             display: flex;
             align-items: center;
@@ -141,7 +139,6 @@
             font-weight: 600;
         }
 
-        /* Meta section */
         .meta-section {
             margin-bottom: 30px;
         }
@@ -183,7 +180,6 @@
             border-color: #c06060;
         }
 
-        /* Timeline section */
         .timeline-section {
             margin-top: 30px;
         }
@@ -195,7 +191,6 @@
             margin-bottom: 15px;
         }
 
-        /* Category tags */
         .category-tags {
             display: flex;
             flex-wrap: wrap;
@@ -231,7 +226,6 @@
             color: #c06060;
         }
 
-        /* Year sections */
         .year-section {
             margin-bottom: 30px;
         }
@@ -248,7 +242,6 @@
             border-bottom-color: #ddd;
         }
 
-        /* Post entries */
         .post-entry {
             display: grid;
             grid-template-columns: 50px 40px 1fr auto;
@@ -285,7 +278,6 @@
             text-align: right;
         }
 
-        /* Mobile responsive */
         @media (max-width: 600px) {
             .post-entry {
                 grid-template-columns: 35px 25px 1fr;
@@ -297,9 +289,6 @@
             }
         }
 
-        /* ============================================
-           SLIDE-OUT PANEL STYLES
-           ============================================ */
         .panel-overlay {
             display: none;
             position: fixed;
@@ -425,10 +414,8 @@
     </style>
 </head>
 <body>
-    <!-- Overlay for mobile -->
     <div class="panel-overlay" id="panel-overlay"></div>
 
-    <!-- Slide-out Panel -->
     <div class="slide-panel" id="slide-panel">
         <button class="panel-close" id="panel-close">×</button>
         <div class="panel-content">
@@ -539,7 +526,6 @@
                     <button class="category-tag" data-category="misc">Misc</button>
                 </div>
 
-                <!-- 2024 -->
                 <div class="year-section">
                     <div class="year-header">2024</div>
                     
@@ -568,12 +554,11 @@
         </main>
 
         <footer>
-            <a href="/cv.pdf">CV</a> · <a href="mailto:whatley.ali6@gmail.com">contact</a>
+            <a href="/cv.html">CV</a> · <a href="mailto:whatley.ali6@gmail.com">contact</a>
         </footer>
     </div>
 
     <script>
-        // Theme toggle
         const toggle = document.getElementById('theme-toggle');
         const body = document.body;
 
@@ -594,7 +579,6 @@
             }
         });
 
-        // Category filtering
         const categoryTags = document.querySelectorAll('.category-tag');
         const postEntries = document.querySelectorAll('.post-entry');
 
@@ -615,7 +599,6 @@
             });
         });
 
-        // Slide panel functionality
         const overviewLink = document.getElementById('overview-link');
         const slidePanel = document.getElementById('slide-panel');
         const panelClose = document.getElementById('panel-close');
@@ -633,7 +616,6 @@
             body.classList.remove('panel-open');
         });
 
-        // Close panel with Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && body.classList.contains('panel-open')) {
                 body.classList.remove('panel-open');
