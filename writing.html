@@ -5,488 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Writing - Ali Whatley</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
-        }
-
-        body.light-mode {
-            background-color: #ffffff;
-            color: #333333;
-        }
-
-        .main-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            transition: margin-right 0.3s ease;
-        }
-
-        body.panel-open .main-wrapper {
-            margin-right: 500px;
-        }
-
-        @media (max-width: 1200px) {
-            body.panel-open .main-wrapper {
-                margin-right: 0;
-            }
-        }
-
-        header {
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        h1 a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        nav {
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-
-        nav a {
-            color: #999;
-            text-decoration: none;
-            margin-right: 5px;
-        }
-
-        nav a.active {
-            color: #fff;
-        }
-
-        nav a:hover {
-            color: #fff;
-        }
-
-        body.light-mode nav a {
-            color: #666;
-        }
-
-        body.light-mode nav a.active,
-        body.light-mode nav a:hover {
-            color: #333;
-        }
-
-        #theme-toggle {
-            background: none;
-            border: 1px solid #555;
-            padding: 5px 12px;
-            cursor: pointer;
-            font-size: 14px;
-            border-radius: 4px;
-            margin-left: 10px;
-            color: #e0e0e0;
-        }
-
-        #theme-toggle:hover {
-            border-color: #777;
-        }
-
-        body.light-mode #theme-toggle {
-            border-color: #ccc;
-            color: #333;
-        }
-
-        a {
-            color: #d19a9a;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        body.light-mode a {
-            color: #c06060;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            cursor: pointer;
-        }
-
-        .section-header::before {
-            content: "▼";
-            margin-right: 10px;
-            font-size: 12px;
-            transition: transform 0.2s;
-        }
-
-        .section-header.collapsed::before {
-            transform: rotate(-90deg);
-        }
-
-        .section-title {
-            font-size: 22px;
-            font-weight: 600;
-        }
-
-        .meta-section {
-            margin-bottom: 30px;
-        }
-
-        .meta-label {
-            font-size: 12px;
-            letter-spacing: 1px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .meta-link {
-            background: #2a2a2a;
-            padding: 15px 20px;
-            border-radius: 4px;
-            display: block;
-            cursor: pointer;
-            transition: background 0.2s;
-            border: 1px solid transparent;
-        }
-
-        .meta-link:hover {
-            background: #333;
-            text-decoration: none;
-            border-color: #d19a9a;
-        }
-
-        .meta-link::before {
-            content: "→ ";
-            margin-right: 5px;
-        }
-
-        body.light-mode .meta-link {
-            background: #f5f5f5;
-        }
-
-        body.light-mode .meta-link:hover {
-            background: #eee;
-            border-color: #c06060;
-        }
-
-        .timeline-section {
-            margin-top: 30px;
-        }
-
-        .timeline-label {
-            font-size: 12px;
-            letter-spacing: 1px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .category-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .category-tag {
-            padding: 6px 14px;
-            border: 1px solid #444;
-            border-radius: 4px;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.2s;
-            color: #e0e0e0;
-            background: transparent;
-        }
-
-        .category-tag:hover,
-        .category-tag.active {
-            border-color: #d19a9a;
-            color: #d19a9a;
-        }
-
-        body.light-mode .category-tag {
-            border-color: #ddd;
-            color: #666;
-        }
-
-        body.light-mode .category-tag:hover,
-        body.light-mode .category-tag.active {
-            border-color: #c06060;
-            color: #c06060;
-        }
-
-        .year-section {
-            margin-bottom: 30px;
-        }
-
-        .year-header {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #333;
-        }
-
-        body.light-mode .year-header {
-            border-bottom-color: #ddd;
-        }
-
-        .post-entry {
-            display: grid;
-            grid-template-columns: 50px 40px 1fr auto;
-            gap: 10px;
-            align-items: baseline;
-            padding: 8px 0;
-        }
-
-        .post-month {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .post-day {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .post-title {
-            color: #d19a9a;
-        }
-
-        .post-title:hover {
-            text-decoration: underline;
-        }
-
-        body.light-mode .post-title {
-            color: #c06060;
-        }
-
-        .post-category {
-            color: #666;
-            font-size: 13px;
-            text-align: right;
-        }
-
-        @media (max-width: 600px) {
-            .post-entry {
-                grid-template-columns: 35px 25px 1fr;
-                gap: 5px;
-            }
-
-            .post-category {
-                display: none;
-            }
-        }
-
-        .panel-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 998;
-        }
-
-        body.panel-open .panel-overlay {
-            display: block;
-        }
-
-        @media (min-width: 1201px) {
-            body.panel-open .panel-overlay {
-                display: none;
-            }
-        }
-
-        .slide-panel {
-            position: fixed;
-            top: 0;
-            right: -520px;
-            width: 500px;
-            max-width: 100vw;
-            height: 100vh;
-            background: #1a1a1a;
-            border-left: 1px solid #333;
-            z-index: 999;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-            padding: 40px 30px;
-        }
-
-        body.light-mode .slide-panel {
-            background: #ffffff;
-            border-left-color: #ddd;
-        }
-
-        body.panel-open .slide-panel {
-            right: 0;
-        }
-
-        .panel-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #999;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 5px 10px;
-            line-height: 1;
-        }
-
-        .panel-close:hover {
-            color: #fff;
-        }
-
-        body.light-mode .panel-close:hover {
-            color: #333;
-        }
-
-        .panel-content h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            padding-right: 40px;
-        }
-
-        .panel-content p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .panel-content h3 {
-            font-size: 17px;
-            font-weight: 600;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #d19a9a;
-        }
-
-        body.light-mode .panel-content h3 {
-            color: #c06060;
-        }
-
-        .panel-content ul {
-            list-style: disc;
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .panel-content ul li {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #333;
-            margin: 40px 0;
-        }
-
-        body.light-mode hr {
-            border-top-color: #ddd;
-        }
-
-        footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            font-size: 14px;
-            color: #999;
-        }
-
-        body.light-mode footer {
-            border-top-color: #ddd;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; background-color: #1a1a1a; color: #e0e0e0; }
+        body.light-mode { background-color: #ffffff; color: #333333; }
+        .main-wrapper { max-width: 900px; margin: 0 auto; padding: 40px 20px; transition: margin-right 0.3s ease; }
+        body.panel-open .main-wrapper { margin-right: 500px; }
+        @media (max-width: 1200px) { body.panel-open .main-wrapper { margin-right: 0; } }
+        header { margin-bottom: 40px; }
+        h1 { font-size: 24px; margin-bottom: 20px; font-weight: 600; }
+        h1 a { color: inherit; text-decoration: none; }
+        nav { margin-bottom: 30px; font-size: 14px; }
+        nav a { color: #999; text-decoration: none; margin-right: 5px; }
+        nav a.active { color: #fff; }
+        nav a:hover { color: #fff; }
+        body.light-mode nav a { color: #666; }
+        body.light-mode nav a.active, body.light-mode nav a:hover { color: #333; }
+        #theme-toggle { background: none; border: 1px solid #555; padding: 5px 12px; cursor: pointer; font-size: 14px; border-radius: 4px; margin-left: 10px; color: #e0e0e0; }
+        #theme-toggle:hover { border-color: #777; }
+        body.light-mode #theme-toggle { border-color: #ccc; color: #333; }
+        a { color: #d19a9a; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        body.light-mode a { color: #c06060; }
+        .section-header { display: flex; align-items: center; margin-bottom: 20px; cursor: pointer; }
+        .section-header::before { content: "\25BC"; margin-right: 10px; font-size: 12px; transition: transform 0.2s; }
+        .section-header.collapsed::before { transform: rotate(-90deg); }
+        .section-title { font-size: 22px; font-weight: 600; }
+        .meta-section { margin-bottom: 30px; }
+        .meta-label { font-size: 12px; letter-spacing: 1px; color: #666; margin-bottom: 10px; }
+        .meta-link { background: #2a2a2a; padding: 15px 20px; border-radius: 4px; display: block; cursor: pointer; transition: background 0.2s; border: 1px solid transparent; }
+        .meta-link:hover { background: #333; text-decoration: none; border-color: #d19a9a; }
+        .meta-link::before { content: "\2192 "; margin-right: 5px; }
+        body.light-mode .meta-link { background: #f5f5f5; }
+        body.light-mode .meta-link:hover { background: #eee; border-color: #c06060; }
+        .timeline-section { margin-top: 30px; }
+        .timeline-label { font-size: 12px; letter-spacing: 1px; color: #666; margin-bottom: 15px; }
+        .category-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+        .category-tag { padding: 6px 14px; border: 1px solid #444; border-radius: 4px; font-size: 13px; cursor: pointer; transition: all 0.2s; color: #e0e0e0; background: transparent; }
+        .category-tag:hover, .category-tag.active { border-color: #d19a9a; color: #d19a9a; }
+        body.light-mode .category-tag { border-color: #ddd; color: #666; }
+        body.light-mode .category-tag:hover, body.light-mode .category-tag.active { border-color: #c06060; color: #c06060; }
+        .year-section { margin-bottom: 30px; }
+        .year-header { font-size: 16px; font-weight: 600; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #333; }
+        body.light-mode .year-header { border-bottom-color: #ddd; }
+        .post-entry { display: grid; grid-template-columns: 50px 40px 1fr auto; gap: 10px; align-items: baseline; padding: 8px 0; }
+        .post-month { color: #666; font-size: 14px; }
+        .post-day { color: #666; font-size: 14px; }
+        .post-title { color: #d19a9a; }
+        .post-title:hover { text-decoration: underline; }
+        body.light-mode .post-title { color: #c06060; }
+        .post-category { color: #666; font-size: 13px; text-align: right; }
+        @media (max-width: 600px) { .post-entry { grid-template-columns: 35px 25px 1fr; gap: 5px; } .post-category { display: none; } }
+        .panel-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 998; }
+        body.panel-open .panel-overlay { display: block; }
+        @media (min-width: 1201px) { body.panel-open .panel-overlay { display: none; } }
+        .slide-panel { position: fixed; top: 0; right: -520px; width: 500px; max-width: 100vw; height: 100vh; background: #1a1a1a; border-left: 1px solid #333; z-index: 999; transition: right 0.3s ease; overflow-y: auto; padding: 40px 30px; }
+        body.light-mode .slide-panel { background: #ffffff; border-left-color: #ddd; }
+        body.panel-open .slide-panel { right: 0; }
+        .panel-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #999; font-size: 24px; cursor: pointer; padding: 5px 10px; line-height: 1; }
+        .panel-close:hover { color: #fff; }
+        body.light-mode .panel-close:hover { color: #333; }
+        .panel-content h2 { font-size: 24px; font-weight: 600; margin-bottom: 20px; padding-right: 40px; }
+        .panel-content p { margin-bottom: 20px; line-height: 1.8; }
+        .panel-content h3 { font-size: 17px; font-weight: 600; margin-top: 30px; margin-bottom: 15px; color: #d19a9a; }
+        body.light-mode .panel-content h3 { color: #c06060; }
+        .panel-content ul { list-style: disc; margin-left: 20px; margin-bottom: 20px; }
+        .panel-content ul li { margin-bottom: 10px; line-height: 1.6; }
+        hr { border: none; border-top: 1px solid #333; margin: 40px 0; }
+        body.light-mode hr { border-top-color: #ddd; }
+        footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #333; font-size: 14px; color: #999; }
+        body.light-mode footer { border-top-color: #ddd; }
     </style>
 </head>
 <body>
     <div class="panel-overlay" id="panel-overlay"></div>
 
     <div class="slide-panel" id="slide-panel">
-        <button class="panel-close" id="panel-close">×</button>
+        <button class="panel-close" id="panel-close">&#215;</button>
         <div class="panel-content">
             <h2>An overview of my writing on defense, economics, and technology</h2>
-
-            <p>
-                I write about how states make strategic choices—and why those choices often don't look like 
-                what traditional IR theory predicts.
-            </p>
-
-            <p>
-                The questions I keep coming back to share a common thread: how do economic relationships, 
-                technological capabilities, and domestic politics interact to shape state behavior? Standard 
-                models treat states as unitary actors responding rationally to external threats. But the 
-                interesting stuff happens when you open up that black box.
-            </p>
-
+            <p>I write about how states make strategic choices--and why those choices often don't look like what traditional IR theory predicts.</p>
+            <p>The questions I keep coming back to share a common thread: how do economic relationships, technological capabilities, and domestic politics interact to shape state behavior? Standard models treat states as unitary actors responding rationally to external threats. But the interesting stuff happens when you open up that black box.</p>
             <h3>Why states accept dangerous dependencies</h3>
-
-            <p>
-                Countries routinely accept strategic dependencies on potential adversaries. Vietnam welcomes 
-                Alibaba despite dozens of maritime confrontations with China. The Philippines expanded Chinese 
-                digital infrastructure after winning an international ruling against Beijing. These patterns 
-                don't make sense if you assume states simply weigh threats and respond accordingly. They make 
-                more sense when you look at domestic bargaining—which actors hold veto power, what tradeoffs 
-                they're willing to accept, and how institutions aggregate competing preferences. Foreign policy 
-                is domestic policy conducted abroad.
-            </p>
-
+            <p>Countries routinely accept strategic dependencies on potential adversaries. Vietnam welcomes Alibaba despite dozens of maritime confrontations with China. The Philippines expanded Chinese digital infrastructure after winning an international ruling against Beijing. These patterns don't make sense if you assume states simply weigh threats and respond accordingly. They make more sense when you look at domestic bargaining--which actors hold veto power, what tradeoffs they're willing to accept, and how institutions aggregate competing preferences. Foreign policy is domestic policy conducted abroad.</p>
             <h3>How interdependence changes conflict</h3>
-
-            <p>
-                Economic interdependence hasn't brought peace. It's changed how states fight. High trade 
-                vulnerability doesn't prevent conflict—it pushes states toward lower-intensity tactics. 
-                Gray-zone competition, cyber operations, and economic coercion have proliferated alongside 
-                globalization, not despite it. The liberal peace theorists weren't wrong about interdependence 
-                mattering. They were wrong about how it matters.
-            </p>
-
+            <p>Economic interdependence hasn't brought peace. It's changed how states fight. High trade vulnerability doesn't prevent conflict--it pushes states toward lower-intensity tactics. Gray-zone competition, cyber operations, and economic coercion have proliferated alongside globalization, not despite it. The liberal peace theorists weren't wrong about interdependence mattering. They were wrong about how it matters.</p>
             <h3>Technology proliferation and strategic instability</h3>
-
-            <p>
-                Capabilities diffuse faster than institutions can adapt. The 2017 WannaCry and NotPetya attacks 
-                showed how quickly an American exploit could leak, get weaponized by North Korea and Russia, 
-                and cause billions in global damage—all within months. This pattern repeats across domains. 
-                Understanding technology competition means tracking not just who builds capabilities but how 
-                they spread, who controls chokepoints, and what happens when control breaks down.
-            </p>
-
+            <p>Capabilities diffuse faster than institutions can adapt. The 2017 WannaCry and NotPetya attacks showed how quickly an American exploit could leak, get weaponized by North Korea and Russia, and cause billions in global damage--all within months. This pattern repeats across domains. Understanding technology competition means tracking not just who builds capabilities but how they spread, who controls chokepoints, and what happens when control breaks down.</p>
             <h3>The political economy of defense</h3>
-
-            <p>
-                Security isn't free, and how states pay for it shapes what they can do. Defense economics sits 
-                at the intersection of fiscal constraints, industrial policy, and strategic choice. I'm interested 
-                in how resource constraints force tradeoffs, how defense industries create political constituencies, 
-                and how economic statecraft works as a tool of competition short of war.
-            </p>
-
+            <p>Security isn't free, and how states pay for it shapes what they can do. Defense economics sits at the intersection of fiscal constraints, industrial policy, and strategic choice. I'm interested in how resource constraints force tradeoffs, how defense industries create political constituencies, and how economic statecraft works as a tool of competition short of war.</p>
             <h3>What I'm working on</h3>
-
-            <p>
-                Current projects examine Digital Silk Road adoption in Southeast Asia (why domestic institutions 
-                explain more than threat perception), trade structure and conflict intensity (why vulnerability 
-                constrains escalation), and cyber capability proliferation. Broader interests include energy 
-                security, emerging technology governance, and the political economy of great power competition.
-            </p>
-
-            <p>
-                I'm skeptical of clean theories and interested in messy realities. Most of what I write tries 
-                to explain puzzles that existing frameworks handle poorly.
-            </p>
+            <p>Current projects examine Digital Silk Road adoption in Southeast Asia (why domestic institutions explain more than threat perception), trade structure and conflict intensity (why vulnerability constrains escalation), and cyber capability proliferation. Broader interests include energy security, emerging technology governance, and the political economy of great power competition.</p>
+            <p>I'm skeptical of clean theories and interested in messy realities. Most of what I write tries to explain puzzles that existing frameworks handle poorly.</p>
         </div>
     </div>
 
@@ -494,11 +103,11 @@
         <header>
             <h1><a href="/">Ali Whatley</a></h1>
             <nav>
-                <a href="/">home</a> · 
-                <a href="/research.html">research</a> · 
-                <a href="/writing.html" class="active">writing</a> · 
-                <a href="/cv.html">cv</a> · 
-                <a href="/about.html">about</a> · 
+                <a href="/">home</a> &#183;
+                <a href="/research.html">research</a> &#183;
+                <a href="/writing.html" class="active">writing</a> &#183;
+                <a href="/cv.html">cv</a> &#183;
+                <a href="/about.html">about</a> &#183;
                 <a href="/contact.html">contact</a>
                 <button id="theme-toggle">[light]</button>
             </nav>
@@ -516,7 +125,7 @@
 
             <div class="timeline-section">
                 <div class="timeline-label">TIMELINE</div>
-                
+
                 <div class="category-tags">
                     <button class="category-tag active" data-category="all">All</button>
                     <button class="category-tag" data-category="security">Security</button>
@@ -528,7 +137,7 @@
 
                 <div class="year-section">
                     <div class="year-header">2024</div>
-                    
+
                     <div class="post-entry" data-category="politics">
                         <span class="post-month">Dec</span>
                         <span class="post-day">29</span>
@@ -546,7 +155,7 @@
                     <div class="post-entry" data-category="politics">
                         <span class="post-month">Oct</span>
                         <span class="post-day">20</span>
-                        <a href="https://pollitik.substack.com/p/presidential-approval-in-ukraine" class="post-title">Presidential Approval in Ukraine, Past & Present</a>
+                        <a href="https://pollitik.substack.com/p/presidential-approval-in-ukraine" class="post-title">Presidential Approval in Ukraine, Past &#38; Present</a>
                         <span class="post-category">Politics</span>
                     </div>
                 </div>
@@ -554,72 +163,44 @@
         </main>
 
         <footer>
-            <a href="/cv.html">CV</a> · <a href="mailto:whatley.ali6@gmail.com">contact</a>
+            <a href="/cv.html">CV</a> &#183; <a href="/contact.html">contact</a>
         </footer>
     </div>
 
     <script>
-        const toggle = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        if (currentTheme === 'light') {
-            body.classList.add('light-mode');
-            toggle.textContent = '[dark]';
-        }
-
-        toggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                toggle.textContent = '[dark]';
-                localStorage.setItem('theme', 'light');
-            } else {
-                toggle.textContent = '[light]';
-                localStorage.setItem('theme', 'dark');
-            }
+        var toggle = document.getElementById('theme-toggle');
+        var bd = document.body;
+        var saved = localStorage.getItem('theme') || 'dark';
+        if (saved === 'light') { bd.classList.add('light-mode'); toggle.textContent = '[dark]'; }
+        toggle.addEventListener('click', function() {
+            bd.classList.toggle('light-mode');
+            if (bd.classList.contains('light-mode')) { toggle.textContent = '[dark]'; localStorage.setItem('theme', 'light'); }
+            else { toggle.textContent = '[light]'; localStorage.setItem('theme', 'dark'); }
         });
 
-        const categoryTags = document.querySelectorAll('.category-tag');
-        const postEntries = document.querySelectorAll('.post-entry');
-
-        categoryTags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                categoryTags.forEach(t => t.classList.remove('active'));
+        var categoryTags = document.querySelectorAll('.category-tag');
+        var postEntries = document.querySelectorAll('.post-entry');
+        categoryTags.forEach(function(tag) {
+            tag.addEventListener('click', function() {
+                categoryTags.forEach(function(t) { t.classList.remove('active'); });
                 tag.classList.add('active');
-
-                const category = tag.dataset.category;
-
-                postEntries.forEach(post => {
-                    if (category === 'all' || post.dataset.category === category) {
-                        post.style.display = 'grid';
-                    } else {
-                        post.style.display = 'none';
-                    }
+                var category = tag.dataset.category;
+                postEntries.forEach(function(post) {
+                    if (category === 'all' || post.dataset.category === category) { post.style.display = 'grid'; }
+                    else { post.style.display = 'none'; }
                 });
             });
         });
 
-        const overviewLink = document.getElementById('overview-link');
-        const slidePanel = document.getElementById('slide-panel');
-        const panelClose = document.getElementById('panel-close');
-        const panelOverlay = document.getElementById('panel-overlay');
-
-        overviewLink.addEventListener('click', () => {
-            body.classList.add('panel-open');
-        });
-
-        panelClose.addEventListener('click', () => {
-            body.classList.remove('panel-open');
-        });
-
-        panelOverlay.addEventListener('click', () => {
-            body.classList.remove('panel-open');
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && body.classList.contains('panel-open')) {
-                body.classList.remove('panel-open');
-            }
+        var overviewLink = document.getElementById('overview-link');
+        var slidePanel = document.getElementById('slide-panel');
+        var panelClose = document.getElementById('panel-close');
+        var panelOverlay = document.getElementById('panel-overlay');
+        overviewLink.addEventListener('click', function() { bd.classList.add('panel-open'); });
+        panelClose.addEventListener('click', function() { bd.classList.remove('panel-open'); });
+        panelOverlay.addEventListener('click', function() { bd.classList.remove('panel-open'); });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && bd.classList.contains('panel-open')) { bd.classList.remove('panel-open'); }
         });
     </script>
 </body>
