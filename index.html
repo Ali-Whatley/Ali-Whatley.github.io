@@ -88,7 +88,6 @@
             border-color: #999;
         }
 
-        /* Hero section with photo - FIXED LAYOUT */
         .hero {
             display: flex;
             gap: 30px;
@@ -106,14 +105,13 @@
 
         .hero-text {
             flex: 1;
-            min-width: 0; /* Prevents text overflow */
+            min-width: 0;
         }
 
         .hero-text p {
             margin-bottom: 16px;
         }
 
-        /* Mobile responsive */
         @media (max-width: 600px) {
             .hero {
                 flex-direction: column;
@@ -213,28 +211,24 @@
             <img src="photo.jpg" alt="Ali Whatley" class="hero-photo">
             <div class="hero-text">
                 <p>
-                    I'm a graduate student at Georgia Tech pursuing an MS in International Affairs, 
-                    through the Sam Nunn School of International Affairs.
+                    Welcome! I'm a graduate student at the <a href="https://inta.gatech.edu/">Sam Nunn School of International Affairs</a> at Georgia Tech, where I'm pursuing an MS in International Affairs with tracks in Science & Technology and International Security.
                 </p>
                 <p>
-                    Before this I completed degrees in Economics and Political Science at Georgia State 
-                    University, where I also finished MA-level coursework in Economics through the 4+1 program.
+                    My research focuses on defense policy, nuclear governance, and energy security. I'm currently working on a project examining organizational decision-making in high-risk technological systems, using the 1954 Castle Bravo nuclear test as a case study.
+                </p>
+                <p>
+                    Before Tech, I completed dual degrees in Economics and Political Science at Georgia State University, along with MA-level coursework in Economics through the 4+1 program.
                 </p>
             </div>
         </div>
 
-        <h2>More coming soon.</h2>
-
         <p>
-            Outside of my studies I spend most of my time reading, watching movies, and following 
-            international security developments. You can see what I'm reading on 
-            <a href="https://www.goodreads.com/user/show/54501309-ali-whatley">Goodreads</a> and 
-            what I'm watching on <a href="https://letterboxd.com/pronceaboo/">Letterboxd</a>.
+            Originally from Halifax, Nova Scotia, I've spent most of my life in Atlanta, Georgia. When I'm not researching, you'll usually find me reading (mostly nonfiction) or watching old movies.
         </p>
 
         <hr>
 
-        <h2>Recent</h2>
+        <h2>Recent Writing</h2>
         <div class="recent-post">
             <span class="post-date">12.29</span>
             <a href="https://pollitik.substack.com/p/jimmy-carter-farmer-politician-humanitarian">Jimmy Carter, Farmer, Politician, Humanitarian, Dies</a>
@@ -254,15 +248,15 @@
             <strong>Elsewhere:</strong> 
             <a href="https://www.linkedin.com/in/ali-whatley-907a22187/">LinkedIn</a> · 
             <a href="https://substack.com/@aliwhatley">Substack</a> · 
-            <a href="https://www.goodreads.com/user/show/54501309-ali-whatley">Goodreads</a> · 
+            <a href="https://www.goodreads.com/user/show/54501309-ali-whatley">Goodreads</a>
         </p>
     </main>
 
     <footer>
-        <a href="/cv.pdf">CV</a> · <a href="mailto:whatley.ali6@gmail.com">contact</a>
+        <a href="/cv.pdf">CV</a> · <a href="/cdn-cgi/l/email-protection#790e11180d151c00571815104f391e14181015571a1614">contact</a>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const toggle = document.getElementById('theme-toggle');
         const body = document.body;
 
@@ -278,10 +272,3 @@
                 toggle.textContent = '[dark]';
                 localStorage.setItem('theme', 'light');
             } else {
-                toggle.textContent = '[light]';
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-    </script>
-</body>
-</html>
